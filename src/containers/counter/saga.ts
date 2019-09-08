@@ -2,6 +2,12 @@ import { put, takeEvery } from 'redux-saga/effects'
 import { ActionType, getType } from 'typesafe-actions'
 import * as actions from './actions'
 
+const targetAction = getType(actions.incrementAsyncAfter)
+
+export default function* counterSaga() {
+  yield takeEvery(targetAction, onIncrementAsyncAfter)
+}
+
 function* onIncrementAsyncAfter(action: ActionType<typeof actions.incrementAsyncAfter>) {
   yield new Promise(resolve => {
     const delay = action.payload * 1000
@@ -12,10 +18,4 @@ function* onIncrementAsyncAfter(action: ActionType<typeof actions.incrementAsync
   })
 
   yield put(actions.increment())
-}
-
-const targetAction = getType(actions.incrementAsyncAfter)
-
-export default function* counterSaga() {
-  yield takeEvery(targetAction, onIncrementAsyncAfter)
 }

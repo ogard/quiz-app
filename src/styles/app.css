@@ -1,0 +1,83 @@
+.app {
+  padding: 5px;
+}
+
+.screen-header {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: rgba(27, 31, 35, 0.7);
+}
+
+
+.out-btn {
+  border: 2px solid black;
+  border-radius: 16px;
+  background-color: white;
+  color: black;
+  padding: 14px 52px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.out-btn:active {
+  outline: none;
+  border: none;
+}
+
+.out-btn.blue {
+  border-color: #2196F3;
+  color: dodgerblue
+}
+
+.out-btn.blue:hover {
+  background: #2196F3;
+  color: white;
+}
+
+.out-btn.green {
+  border-color: green;
+  color: green
+}
+
+.out-btn.green:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.out-btn.orange {
+  border-color: #ff9800;
+}
+
+.out-btn.orange:hover:enabled {
+  background: #ff9800;
+  color: white;
+}
+
+.out-btn.orange.correct:disabled {
+  border-color: green;
+  background: green;
+  color: white;
+}
+
+.out-btn.orange.incorrect:disabled {
+  border-color: red;
+  background: red;
+  color: white;
+}
+
+.fil-btn {
+  border: none;
+  border-radius: 16px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+}
+
+.fil-btn.green {
+  background-color: #4CAF50;
+}
+.fil-btn.green:hover {
+  background-color: #46a049;
+}
+
+

@@ -3,15 +3,32 @@ import ReactDOM from 'react-dom'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
-import './index.css'
-import App from './app'
+import { all } from 'redux-saga/effects'
+import './styles/index.css'
 import * as serviceWorker from './serviceWorker'
-import counterReducer, { State as CounterState } from './containers/counter/reducer'
+
+import appReducer from './containers/app/reducer'
+import appSaga from './containers/app/saga'
+import App from './containers/app'
+
+import counterReducer from './containers/counter/reducer'
 import counterSaga from './containers/counter/saga'
 
+import homeScreenReducer from './containers/home-screen/reducer'
+import homeScreenSaga from './containers/home-screen/saga'
+
+import quizScreenReducer from './containers/quiz-screen/reducer'
+
 const rootReducer = combineReducers({
+  app: appReducer,
   counter: counterReducer,
+  homeScreen: homeScreenReducer,
+  quizScreen: quizScreenReducer,
 })
+
+function* rootSaga() {
+  yield all([appSaga(), counterSaga(), homeScreenSaga()])
+}
 
 export type ApplicationRootState = ReturnType<typeof rootReducer>
 
@@ -35,7 +52,7 @@ const store = createStore(rootReducer, composeEnhancers(...enhancers))
 
 const mountNode = document.getElementById('root') as HTMLElement
 
-sagaMiddleware.run(counterSaga)
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>

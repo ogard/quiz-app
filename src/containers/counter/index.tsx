@@ -59,7 +59,6 @@ const View: React.FC<Props> = ({ currentValue, currentTime, dispatch }) => {
   )
 }
 
-// Map RootState to your StateProps
 const mapStateToProps = (state: ApplicationRootState): StateProps => ({
   currentValue: state.counter.counterValue,
   currentTime: state.counter.asyncTime,
