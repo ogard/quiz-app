@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import '../../styles/app.css'
 
 import * as actions from './actions'
@@ -35,6 +37,7 @@ const App: React.FC<Props> = ({ currentScreen, dispatch }) => {
             return <div />
         }
       })()}
+      <ToastContainer />
     </div>
   )
 }

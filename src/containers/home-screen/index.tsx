@@ -30,7 +30,7 @@ const View: React.FC<Props> = ({ userScores, quiz, dispatch }) => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <button
             className="out-btn green"
-            disabled={quiz != null}
+            disabled={quiz != null && quiz.type !== 'StartedFail'}
             onClick={() => {
               dispatch(actions.startQuiz())
             }}

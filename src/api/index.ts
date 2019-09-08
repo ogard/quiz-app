@@ -18,7 +18,9 @@ export const getQuestions = (): Promise<Questions> =>
     })
     .then(response => response.json())
     .then(data => data)
-    .catch(err => err)
+    .catch(err => {
+      throw err
+    })
 
 interface UserScore {
   score: number

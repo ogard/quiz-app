@@ -1,5 +1,6 @@
-import { put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { ActionType, getType } from 'typesafe-actions'
+import { toast } from 'react-toastify'
 import * as actions from './actions'
 import { getUserScores, UserScores, getQuestions, Questions } from '../../api'
 
@@ -18,6 +19,7 @@ function* onStartQuiz(action: ActionType<typeof actions.startQuiz>) {
     const questions: Questions = yield getQuestions()
     yield put(actions.startQuizSuccess(questions))
   } catch (error) {
-    yield put(actions.startQuizFail(error))
+    yield put(actions.startQuizFail(error.message))
+    yield call(toast, error.message, { type: toast.TYPE.ERROR })
   }
 }
